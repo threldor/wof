@@ -20,4 +20,6 @@ circuit as below (Resistors need to be confirmed)
 
 after defined time the given mp3 is played for that section
 
-![preview thumb](https://github.com/threldor/wof/master/encoder.png)
+an example encoder wheel is given below
+
+![preview thumb](https://github.com/threldor/wof/raw/master/encoder.png)
