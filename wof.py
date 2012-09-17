@@ -15,10 +15,6 @@
 #
 # after defined time the given mp3 is played for that section
 
-# revision changes
-# r000 - initial revision
-
-
 from time import sleep
 import os
 import RPi.GPIO as GPIO
