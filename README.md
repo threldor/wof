@@ -1,23 +1,6 @@
-CouchPotato
+wof
 =====
 
-**Notice to devs: If you want to help with some features, [Please do it on CouchPotatoServer](https://github.com/RuudBurger/CouchPotatoServer).**
+**Created for an exhibition piece**
 
-CouchPotato (CP) is an automatic NZB and torrent downloader. You can keep a "movies I want"-list and it will search for NZBs/torrents of these movies every X hours.
-Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
-
-Features:
-
-* Automatic downloading and sending of NZBs to SABnzbd
-* Automatic downloading of torrents files to a specified directory
-* Easily add movies via IMDB UserScript
-* Movie sorting & renaming
-* Trailer downloading
-* Quality options to download best available. Overwrite if better is found.
-* A "Coming Soon" page with soon to be released DVD and Theater info.
-* Support for NZBs.org, NZBMatrix, Newznab.com and ThePirateBay.
-
-
-![preview thumb](https://github.com/RuudBurger/CouchPotato/raw/master/media/images/screenshot.png)
-
-UserScript:
+wof reads an encoder mounted on the bottom of the wheel with 4 optical sensors and determines the position of the wheel. After the wheel has been turned and stops the associated mp3 for that section is played out the raspberry pi 3.5mm audio plug.
