@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# code written by James and Ott
+# code written by James Connor
 # uses 4 couplers setup with greycode to define 12 sections of a wheel.
 # circuit as below (Resistors need to be confirmed)
 #                          coupler
@@ -101,13 +101,13 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(22, GPIO.IN)
 GPIO.setup(23, GPIO.IN)
 GPIO.setup(24, GPIO.IN)
-GPIO.setup(26, GPIO.IN)
+GPIO.setup(25, GPIO.IN)
 
 #setup pullup resistors on all inputs
 GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_UP)
  
 # setup song list
 setupSongList(songs)
