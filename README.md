@@ -8,15 +8,8 @@ wof reads an encoder mounted on the bottom of the wheel with 4 optical sensors a
 uses 4 couplers setup with greycode to define 12 sections of a wheel.
 circuit as below (Resistors need to be confirmed)
 
-                         coupler
-                      .............
-3.3V----R 10k---|-----:---C B E---:----GND
-                |     :     ^     :
-              GPIO    :     ^     :
-                      :     ^     :
-5V------R 330---------:---diode---:----GND
-                      :           :
-                      .............
+
+![schematic](https://github.com/threldor/wof/raw/master/forkCouplerSchematic.jpg)
 
 after defined time the given mp3 is played for that section
 
