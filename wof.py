@@ -63,6 +63,15 @@ def stopMP3():
 	os.system("C:\\Portable\\mpc\\mpc.exe stop")
 	os.system("C:\\Portable\\mpc\\mpc.exe clear")
 
+# setup sound and mpd
+def setupMPD():
+	os.system("sudo modprobe snd_bcm2835")
+	os.system("sudo amixer cset numid=3 1")
+	os.system("sudo mpd")
+	os.system("sudo mpc")
+	os.system("sudo mpc clear")
+	os.system("sudo mpc volume 25")
+
 # create the debounce array with length waitTime
 def setupDebounce(waitTime, debounce):
 	var = waitTime
@@ -135,15 +144,17 @@ GPIO.setup(coupler4, GPIO.IN)
 setupSongList(songs)
 # setup debounce array
 setupDebounce(waitTime, debounce)
+# setup sound and MPD
+setupMPD()
 
 while True:
 	# check the inputs
-	position = checkInputs()
+	positionNow = checkInputs()
 	
 	# update the debounce array
-	updateDebounce(debounce, position)
+	updateDebounce(debounce, positionNow)
 	
-	# check position
+	# check the actual position
 	position = checkPosition(debounce)
 	
 	# update allow playing only if the wheel has changed sections from where it stopped last
@@ -164,3 +175,5 @@ while True:
 		# then release the solenoid and continue
 	
 	sleep(1);
+
+print "done"
