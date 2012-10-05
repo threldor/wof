@@ -3,13 +3,16 @@
 # code written by James Connor
 # uses 4 couplers setup with greycode to define 12 sections of a wheel.
 # circuit as below (Resistors need to be confirmed)
-#                          coupler
-#                       .............
+
+#                GPIO 
+#                 | 
+#                R 1k      coupler
+#                 |     .............
 # 3.3V----R 10k---|-----:---C B E---:----GND
-#                 |     :     ^     :
-#               GPIO    :     ^     :
 #                       :     ^     :
-# 5V------R 330---------:---diode---:----GND
+#                       :     ^     :
+#                       :     ^     :
+# 5V------R 220---------:---diode---:----GND
 #                       :           :
 #                       .............
 #
@@ -36,6 +39,10 @@ debounce = []
 position = -1
 songs[]
 allowPlaying = False
+coupler1 = 17
+coupler2 = 23
+coupler3 = 24
+coupler4 = 25
 
 # play the mp3
 def playMP3(songName):
@@ -83,13 +90,13 @@ def checkInputs():
 	greyValue = 0
 	
 	# get grey value
-	if ( GPIO.input(22) == False ):
+	if ( GPIO.input(coupler1) == False ):
 		greyValue += 1
-	if ( GPIO.input(23) == False ):
+	if ( GPIO.input(coupler2) == False ):
 		greyValue += 2
-	if ( GPIO.input(24) == False ):
+	if ( GPIO.input(coupler3) == False ):
 		greyValue += 4
-	if ( GPIO.input(25)== False ):
+	if ( GPIO.input(coupler4)== False ):
 		greyValue += 8
 	
 	return pos[greyValue]
@@ -98,16 +105,16 @@ def checkInputs():
 GPIO.setmode(GPIO.BCM) 
 
 # setup pin directions
-GPIO.setup(22, GPIO.IN)
-GPIO.setup(23, GPIO.IN)
-GPIO.setup(24, GPIO.IN)
-GPIO.setup(25, GPIO.IN)
+GPIO.setup(coupler1, GPIO.IN)
+GPIO.setup(coupler2, GPIO.IN)
+GPIO.setup(coupler3, GPIO.IN)
+GPIO.setup(coupler4, GPIO.IN)
 
 #setup pullup resistors on all inputs
-GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(coupler1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(coupler2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(coupler3, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#GPIO.setup(coupler4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
  
 # setup song list
 setupSongList(songs)
