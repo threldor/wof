@@ -44,7 +44,7 @@ waitTime = 3
 debounce = []
 position = -1
 songs[]
-allowPlaying = False
+sectionChanged = False
 coupler1 = 17
 coupler2 = 23
 coupler3 = 24
@@ -53,7 +53,15 @@ coupler4 = 25
 # play the mp3
 def playMP3(songName):
 	# so we need to stop, clear, add then play
-	os.system('mpg321 ' + songName + ' &')
+	stopMP3()
+	os.system("C:\\Portable\\mpc\\mpc.exe add " + songName)
+	cmd = subprocess.Popen("C:\\Portable\\mpc\\mpc.exe play",shell=True, stdout=subprocess.PIPE)
+	print "Section : " + str(section) + " playing.....  " + cmd.stdout.readline()
+
+# stop the mp3
+def stopMP3():
+	os.system("C:\\Portable\\mpc\\mpc.exe stop")
+	os.system("C:\\Portable\\mpc\\mpc.exe clear")
 
 # create the debounce array with length waitTime
 def setupDebounce(waitTime, debounce):
@@ -138,14 +146,16 @@ while True:
 	# check position
 	position = checkPosition(debounce)
 	
-	# update allow playing only if the wheel has moved from where it stopped last
-	# this prevents the same cong playing over and over again
+	# update allow playing only if the wheel has changed sections from where it stopped last
+	# this prevents the same song playing over and over again
+	# also stop any currently playing songs
 	if position < 0:
-		allowPlaying = True
+		sectionChanged = True
+		stopMP3()
 	
 	# play mp3 if position is valid
-	if (position >= 0 and allowPlaying):
-		allowPlaying = False
+	if (position >= 0 and sectionChanged):
+		sectionChanged = False
 		
 		# play the required song
 		playMP3(songs[position])
