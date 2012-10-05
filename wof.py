@@ -27,9 +27,15 @@ def setupSongList(songs):
 	song1 = '001-FeelSoGood.mp3'
 	song2 = '002-LoveFoolosophy.mp3'
 	song3 = '003-ReadyForTheFloor.mp3'
+	song4 = '004-AndIWasABoyFromSchool.mp3'
+	song5 = '005-DANCE.mp3'
+	song6 = '006-Newjack.mp3'
 	songs.append(song1)
 	songs.append(song2)
 	songs.append(song3)
+	songs.append(song4)
+	songs.append(song5)
+	songs.append(song6)
 
 # define wait time in seconds before playing mp3
 waitTime = 3
@@ -46,6 +52,7 @@ coupler4 = 25
 
 # play the mp3
 def playMP3(songName):
+	# so we need to stop, clear, add then play
 	os.system('mpg321 ' + songName + ' &')
 
 # create the debounce array with length waitTime
