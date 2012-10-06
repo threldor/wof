@@ -57,10 +57,6 @@ debounce = []
 position = -1
 songs = []
 sectionChanged = False
-coupler1 = 22
-coupler2 = 23
-coupler3 = 24
-coupler4 = 25
 print "done initial values"
 
 # play the mp3
@@ -144,12 +140,14 @@ def checkInputs():
 GPIO.setmode(GPIO.BCM) 
 
 # setup pin directions
+GPIO.setup(17, GPIO.IN)
 GPIO.setup(22, GPIO.IN)
 GPIO.setup(23, GPIO.IN)
 GPIO.setup(24, GPIO.IN)
 GPIO.setup(25, GPIO.IN)
 
 #setup pullup resistors on all inputs
+#GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #GPIO.setup(coupler1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #GPIO.setup(coupler2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #GPIO.setup(coupler3, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -167,6 +165,9 @@ playingMusic = False
 print "starting loop....."
 
 while True:
+    # break loop if button bressed
+    if ( GPIO.input(17) == True ):
+        break
     # check the inputs
     positionNow = checkInputs()
     
